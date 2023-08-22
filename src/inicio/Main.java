@@ -1,6 +1,5 @@
 package inicio;
 
-import logica.Concesionario;
 import vistas.Pane;
 
 /**
