@@ -44,7 +44,7 @@ public class Concesionario {
     }
 
 
-    //Funcíon temporal para imprimir Arraylist
+    //Funcíon para imprimir el stock de vehiculos
     public void ImprimirArray() {
 
         if (vehiculos.size() <= 0) {
@@ -78,7 +78,36 @@ public class Concesionario {
         }
 
        }
+    //Funcion para imprimir los vehiculos vendidos
+    public void ImprimirArrayVendidos() {
 
+        if (vehicles_sold.size() <= 0) {
+            JOptionPane.showMessageDialog(null, "No hay vehiculos vendidos");
+            //imprimir el arreglo con for
+
+        } else {
+
+            for (Vehicle vehiculo : vehicles_sold) {
+
+                System.out.print(vehiculo.getPlaca() + " " + vehiculo.getMarca() + " "
+                        + vehiculo.getReferencia() + " " + vehiculo.getModelo() + " "
+                        + vehiculo.getPrecio() + " " + vehiculo.getNum_ruedas());
+                if (vehiculo instanceof Auto) {
+                    Auto auto = (Auto) vehiculo; // Hacemos un cast para acceder a los métodos específicos de Auto
+                    System.out.println("  " + auto.getNum_puertas() + " " + auto.getIs_gasolina());
+
+                } else if (vehiculo instanceof Camion) {
+                    Camion camion = (Camion) vehiculo; // Hacemos un cast para acceder a los métodos específicos de Camion
+                    System.out.println("  " + camion.getCap_carga());
+                } else if (vehiculo instanceof Moto) {
+                    Moto moto = (Moto) vehiculo; // Hacemos un cast para acceder a los métodos específicos de Moto
+                    System.out.println("  " + moto.getCilindraje() + " " + moto.getTam_tanque());
+
+                }
+            }
+        }
+    }
+    //Funciona para buscar un vehiculo por placa
     public Vehicle buscarVehiculoPlaca(String placa) {
         for (Vehicle vehiculo : vehiculos) {
             if (vehiculo.getPlaca().equals(placa)) {
@@ -118,7 +147,7 @@ public class Concesionario {
         }
         return null;
     }
-
+    //funcion para buscar un vehiculo por precio
     public Vehicle buscarVehiculoPrecio(double precio) {
         for (Vehicle vehiculo : vehiculos) {
             if (vehiculo.getPrecio() == precio) {
@@ -129,7 +158,7 @@ public class Concesionario {
         return null;
 
     }
-
+    //funcion para buscar un vehiculo por numero de ruedas
     public Vehicle eliminarVehiculo(String placa) {
         for (Vehicle vehiculo : vehiculos) {
             if (vehiculo.getPlaca().equals(placa)) {
@@ -140,4 +169,46 @@ public class Concesionario {
         }
         return null;
     }
+    //funcion para vender un vehiculo
+    public Vehicle venderVehiculo(String placa) {
+        for (Vehicle vehiculo : vehiculos) {
+            if (vehiculo.getPlaca().equals(placa)) {
+                vehicles_sold.add(vehiculo);
+                vehiculos.remove(vehiculo);
+                JOptionPane.showMessageDialog(null, "Vehiculo de placa: "+placa+" ha sido vendido");
+                return vehiculo;
+            }
+        }
+        return null;
+    }
+    //Función para actualizar los datos de un vehiculo, ya sea auto, moto o camion
+    public Vehicle actualizarVehiculo(String placa, String marca, String referencia, String modelo,
+                                      double precio, int num_ruedas, int num_puertas, boolean is_gasolina,
+                                      int cilindraje, double capacidad_tanque, double capacidad_carga) {
+        for (Vehicle vehiculo : vehiculos) {
+            if (vehiculo.getPlaca().equals(placa)) {
+                vehiculo.setMarca(marca);
+                vehiculo.setReferencia(referencia);
+                vehiculo.setModelo(modelo);
+                vehiculo.setPrecio(precio);
+                vehiculo.setNum_ruedas(num_ruedas);
+                if (vehiculo instanceof Auto) {
+                    Auto auto = (Auto) vehiculo; // Hacemos un cast para acceder a los métodos específicos de Auto
+                    auto.setNum_puertas(num_puertas);
+                    auto.setIs_gasolina(is_gasolina);
+                } else if (vehiculo instanceof Camion) {
+                    Camion camion = (Camion) vehiculo; // Hacemos un cast para acceder a los métodos específicos de Camion
+                    camion.setCap_carga(capacidad_carga);
+                } else if (vehiculo instanceof Moto) {
+                    Moto moto = (Moto) vehiculo; // Hacemos un cast para acceder a los métodos específicos de Moto
+                    moto.setCilindraje(cilindraje);
+                    moto.setTam_tanque(capacidad_tanque);
+                }
+                JOptionPane.showMessageDialog(null, "Vehiculo de placa: "+placa+" ha sido actualizado");
+                return vehiculo;
+            }
+        }
+        return null;
+    }
+
 }

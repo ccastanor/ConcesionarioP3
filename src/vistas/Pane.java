@@ -196,10 +196,11 @@ public class Pane {
         switch (opcion) {
             case 0:
                 elPelos.ImprimirArray();
-                Administrador();
+                ImprimirVehiculoPane();
                 break;
             case 1:
-                //Imprimir vendidos
+                elPelos.ImprimirArrayVendidos();
+                ImprimirVehiculoPane();
                 break;
             case 2:
                 Administrador();
@@ -211,7 +212,7 @@ public class Pane {
     }
 
     public void VenderVehiculoPane() {
-        String[] opciones = {"Por placa", "Por marca", "Por referencia", "Por modelo", "Atrás"};
+        String[] opciones = {"Placa", "Atrás"};
 
         int opcion = JOptionPane.showOptionDialog(null, "Vender Vehiculo: ",
                 "Concesionario el Pelos - Venta", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
@@ -219,18 +220,11 @@ public class Pane {
 
         switch (opcion) {
             case 0:
-                //Buscar por placa
+                String placa = JOptionPane.showInputDialog("Ingrese la placa del vehiculo a vender");
+                elPelos.venderVehiculo(placa);
+                VenderVehiculoPane();
                 break;
             case 1:
-                //Buscar por marca
-                break;
-            case 2:
-                //Buscar por referencia
-                break;
-            case 3:
-                //Buscar por modelo
-                break;
-            case 4:
                 Administrador();
                 break;
             default:
@@ -240,7 +234,7 @@ public class Pane {
     }
 
     public void ActualizarDatosVehiclePane() {
-        String[] opciones = {"Por placa", "Por marca", "Por referencia", "Por modelo", "Atrás"};
+        String[] opciones = {"Placa", "Atrás"};
 
         int opcion = JOptionPane.showOptionDialog(null, "Actualizar Vehiculo: ",
                 "Concesionario el Pelos - Actualizar", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
@@ -248,18 +242,34 @@ public class Pane {
 
         switch (opcion) {
             case 0:
-                //Buscar por placa
+                String placa = JOptionPane.showInputDialog("Ingrese la placa del vehiculo a actualizar");
+                String marca = JOptionPane.showInputDialog("Ingrese la marca del vehiculo a actualizar");
+                String referencia = JOptionPane.showInputDialog("Ingrese la referencia del vehiculo a actualizar");
+                String modelo = JOptionPane.showInputDialog("Ingrese el modelo del vehiculo a actualizar");
+                double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del vehiculo a " +
+                        "actualizar"));
+                int num_ruedas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de ruedas del vehiculo" +
+                        " a actualizar"));
+                int num_puertas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de puertas del " +
+                        "vehiculo a actualizar"));
+                boolean is_gasolina = JOptionPane.showConfirmDialog(null, "¿El vehiculo es " +
+                                "a gasolina?",
+                        "Concesionario el Pelos - Actualizar vehiculos", JOptionPane.YES_NO_OPTION) ==
+                        JOptionPane.YES_OPTION;
+                if (is_gasolina == true){
+                    is_gasolina = true;
+                } else {
+                    is_gasolina = false;
+                }
+                int cilindraje= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el cilindraje del vehiculo a actualizar"));
+                double tam_tanque = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el tamaño del tanque del vehiculo a actualizar"));
+                double capacidad_carga = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la capacidad de carga del vehiculo a actualizar"));
+
+                elPelos.actualizarVehiculo(placa, marca, referencia, modelo, precio, num_ruedas, num_puertas,
+                        is_gasolina, cilindraje, tam_tanque, capacidad_carga);
+                ActualizarDatosVehiclePane();
                 break;
             case 1:
-                //Buscar por marca
-                break;
-            case 2:
-                //Buscar por referencia
-                break;
-            case 3:
-                //Buscar por modelo
-                break;
-            case 4:
                 Administrador();
                 break;
             default:
