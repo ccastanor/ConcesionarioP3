@@ -2,9 +2,7 @@ package logica;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import logica.Auto;
-import logica.Moto;
-import logica.Vehicle;
+
 /**
  * Clase Consecionario donde tendremos los metodos para agregar vehiculos, buscarlos, venderlos, etc.
  *
@@ -13,11 +11,6 @@ import logica.Vehicle;
  * @see <a href = "https://github.com/ccastanor" /> github.com/ccastanor – mis inicios en Git </a>
  */
 public class Concesionario {
-
-    Auto elPelosAuto = new Auto();
-    Camion elPelosCamion = new Camion();
-    Moto elPelosMoto = new Moto();
-
 
     //Creamos Arraylist para almacenar todos los vehiculos y los vendidos
     private ArrayList<Vehicle> vehiculos = new ArrayList<Vehicle>();
@@ -187,6 +180,7 @@ public class Concesionario {
                                       int cilindraje, double capacidad_tanque, double capacidad_carga) {
         for (Vehicle vehiculo : vehiculos) {
             if (vehiculo.getPlaca().equals(placa)) {
+                vehiculo.setPlaca(placa);
                 vehiculo.setMarca(marca);
                 vehiculo.setReferencia(referencia);
                 vehiculo.setModelo(modelo);
@@ -208,6 +202,15 @@ public class Concesionario {
                 return vehiculo;
             }
         }
+        return null;
+    }
+    //Funcion para ver las ventas totales de vehiculos
+    public Vehicle ventasTotales() {
+        double total = 0;
+        for (Vehicle vehiculo : vehicles_sold) {
+            total += vehiculo.getPrecio();
+        }
+        JOptionPane.showMessageDialog(null, "El total de ventas es: "+total);
         return null;
     }
 

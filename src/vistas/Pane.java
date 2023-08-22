@@ -1,11 +1,8 @@
 package vistas;
 
 import javax.swing.*;
-
-import logica.Auto;
 import logica.Concesionario;
-import logica.Moto;
-import logica.Vehicle;
+
 /**
  * Clase Pane para crear la parte visual por medio de JOptionPane
  *
@@ -15,7 +12,17 @@ import logica.Vehicle;
  */
 public class Pane {
     Concesionario elPelos = new Concesionario();
-    Icon icono = new ImageIcon(getClass().getResource("conc.png"));
+    Icon iconoMenu = new ImageIcon(getClass().getResource("Menu.png"));
+    Icon iconoAgregar = new ImageIcon(getClass().getResource("Agregar.png"));
+    Icon iconoBuscar = new ImageIcon(getClass().getResource("Buscar.png"));
+    Icon iconoListar = new ImageIcon(getClass().getResource("Listar.png"));
+    Icon iconoVentas = new ImageIcon(getClass().getResource("Venta.png"));
+    Icon iconoEliminar = new ImageIcon(getClass().getResource("Eliminar.png"));
+    Icon iconoActualizar = new ImageIcon(getClass().getResource("Actualizar.png"));
+    Icon iconoCarro = new ImageIcon(getClass().getResource("Carro.png"));
+    Icon iconoMoto = new ImageIcon(getClass().getResource("Moto.png"));
+    Icon iconoCamion = new ImageIcon(getClass().getResource("Camion.png"));
+    Icon iconoVentasTotales = new ImageIcon(getClass().getResource("VentasTotales.png"));
 
     /**
      * Método para ejecutar el menú principal
@@ -27,7 +34,7 @@ public class Pane {
 
         int opcion = JOptionPane.showOptionDialog(null, "Seleccione una opción: ",
                 "Concesionario el Pelos - Página principal", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
-                icono, opciones, "Salir");
+                iconoMenu, opciones, "Salir");
 
 
         switch (opcion) {
@@ -54,7 +61,7 @@ public class Pane {
                 break;
             case 7:
                 JOptionPane.showMessageDialog(null, "Gracias por usar la App, vuelva pronto",
-                        "Concesionario el Pelos - Salir", JOptionPane.INFORMATION_MESSAGE, icono);
+                        "Concesionario el Pelos - Salir", JOptionPane.INFORMATION_MESSAGE, iconoMenu);
                 break;
             default:
                 System.out.println("Opción no válida");
@@ -68,7 +75,7 @@ public class Pane {
         String[] opcionesAgre = {"Agregar Automovil", "Agregar Camion", "Agregar Moto", "Atrás"};
 
         int opcionAgre = JOptionPane.showOptionDialog(null, "Agregar Vehiculo: ",
-                "Concesionario el Pelos - Agregar vehiculos", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                "Concesionario el Pelos - Agregar vehiculos", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, iconoAgregar,
                 opcionesAgre, "Atrás");
 
         switch (opcionAgre) {
@@ -92,7 +99,7 @@ public class Pane {
                 elPelos.AgregarVehiculoAuto( placa,  marca,  referencia,  modelo, precio ,num_ruedas,  num_puertas, is_gasolina);
 
                 JOptionPane.showMessageDialog(null, "Automovil agregado con éxito",
-                        "Concesionario el Pelos - Agregar vehiculos", JOptionPane.INFORMATION_MESSAGE, icono);
+                        "Concesionario el Pelos - Agregar vehiculos", JOptionPane.INFORMATION_MESSAGE, iconoCarro);
                 AgregarVehiculoPane();
                 break;
             case 1:
@@ -108,7 +115,7 @@ public class Pane {
                 elPelos.AgregarVehiculoCamion( placaC,  marcaC,  referenciaC,  modeloC, precioC ,num_ruedasC, cap_carga);
 
                 JOptionPane.showMessageDialog(null, "Camión agregado con éxito",
-                        "Concesionario el Pelos - Agregar vehiculos", JOptionPane.INFORMATION_MESSAGE, icono);
+                        "Concesionario el Pelos - Agregar vehiculos", JOptionPane.INFORMATION_MESSAGE, iconoCamion);
 
                 AgregarVehiculoPane();;
 
@@ -127,7 +134,7 @@ public class Pane {
                 elPelos.AgregarVehiculoMoto( placaM,  marcaM,  referenciaM,  modeloM, precioM ,num_ruedasM, cilindraje, tam_tanque);
 
                 JOptionPane.showMessageDialog(null, "Moto agregada con éxito",
-                        "Concesionario el Pelos - Agregar vehiculos", JOptionPane.INFORMATION_MESSAGE, icono);
+                        "Concesionario el Pelos - Agregar vehiculos", JOptionPane.INFORMATION_MESSAGE, iconoMoto);
 
                 AgregarVehiculoPane();;
 
@@ -137,7 +144,7 @@ public class Pane {
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Opción no válida",
-                        "Concesionario el Pelos - Agregar vehiculos", JOptionPane.INFORMATION_MESSAGE, icono);
+                        "Concesionario el Pelos - Agregar vehiculos", JOptionPane.INFORMATION_MESSAGE, iconoAgregar);
                 break;
         }
     }
@@ -146,7 +153,7 @@ public class Pane {
         String[] opciones = {"Por placa", "Por marca", "Por referencia", "Por modelo","Por precio", "Atrás"};
 
         int opcion = JOptionPane.showOptionDialog(null, "Buscar Vehiculo: ",
-                "Concesionario el Pelos - Búsqueda", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                "Concesionario el Pelos - Búsqueda", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, iconoBuscar,
                 opciones, "Atrás");
 
         switch (opcion) {
@@ -180,7 +187,7 @@ public class Pane {
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Opción no válida",
-                        "Concesionario el Pelos - Búsqueda", JOptionPane.INFORMATION_MESSAGE, icono);
+                        "Concesionario el Pelos - Búsqueda", JOptionPane.INFORMATION_MESSAGE, iconoBuscar);
                 break;
         }
     }
@@ -190,7 +197,7 @@ public class Pane {
 
 
         int opcion = JOptionPane.showOptionDialog(null, "Listar Vehiculos: ",
-                "Concesionario el Pelos - Listar", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                "Concesionario el Pelos - Listar", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, iconoListar,
                 opciones, "Atrás");
 
         switch (opcion) {
@@ -206,7 +213,9 @@ public class Pane {
                 Administrador();
                 break;
             default:
-                System.out.println("Opción no válida");
+                JOptionPane.showMessageDialog(null, "Opción no válida",
+                        "Concesionario el Pelos - Listar", JOptionPane.INFORMATION_MESSAGE, iconoListar);
+
                 break;
         }
     }
@@ -215,7 +224,7 @@ public class Pane {
         String[] opciones = {"Placa", "Atrás"};
 
         int opcion = JOptionPane.showOptionDialog(null, "Vender Vehiculo: ",
-                "Concesionario el Pelos - Venta", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                "Concesionario el Pelos - Venta", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, iconoVentas,
                 opciones, "Atrás");
 
         switch (opcion) {
@@ -228,7 +237,9 @@ public class Pane {
                 Administrador();
                 break;
             default:
-                System.out.println("Opción no válida");
+                JOptionPane.showMessageDialog(null, "Opción no válida",
+                        "Concesionario el Pelos - Venta", JOptionPane.INFORMATION_MESSAGE, iconoVentas);
+
                 break;
         }
     }
@@ -237,20 +248,21 @@ public class Pane {
         String[] opciones = {"Placa", "Atrás"};
 
         int opcion = JOptionPane.showOptionDialog(null, "Actualizar Vehiculo: ",
-                "Concesionario el Pelos - Actualizar", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                "Concesionario el Pelos - Actualizar", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, iconoActualizar,
                 opciones, "Atrás");
 
         switch (opcion) {
             case 0:
                 String placa = JOptionPane.showInputDialog("Ingrese la placa del vehiculo a actualizar");
-                String marca = JOptionPane.showInputDialog("Ingrese la marca del vehiculo a actualizar");
-                String referencia = JOptionPane.showInputDialog("Ingrese la referencia del vehiculo a actualizar");
-                String modelo = JOptionPane.showInputDialog("Ingrese el modelo del vehiculo a actualizar");
-                double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del vehiculo a " +
+                String placaC = JOptionPane.showInputDialog("Ingrese la nueva placa del vehiculo a actualizar");
+                String marca = JOptionPane.showInputDialog("Ingrese la nueva marca del vehiculo a actualizar");
+                String referencia = JOptionPane.showInputDialog("Ingrese la nueva referencia del vehiculo a actualizar");
+                String modelo = JOptionPane.showInputDialog("Ingrese el nuevo modelo del vehiculo a actualizar");
+                double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el nuevo precio del vehiculo a " +
                         "actualizar"));
-                int num_ruedas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de ruedas del vehiculo" +
+                int num_ruedas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nuevo número de ruedas del vehiculo" +
                         " a actualizar"));
-                int num_puertas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de puertas del " +
+                int num_puertas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nuevo número de puertas del " +
                         "vehiculo a actualizar"));
                 boolean is_gasolina = JOptionPane.showConfirmDialog(null, "¿El vehiculo es " +
                                 "a gasolina?",
@@ -273,32 +285,25 @@ public class Pane {
                 Administrador();
                 break;
             default:
-                System.out.println("Opción no válida");
+                JOptionPane.showMessageDialog(null, "Opción no válida",
+                        "Concesionario el Pelos - Actualizar", JOptionPane.INFORMATION_MESSAGE, iconoActualizar);
                 break;
         }
     }
 
     public void VentasPane() {
-        String[] opciones = {"Por placa", "Por marca", "Por referencia", "Por modelo", "Atrás"};
+        String[] opciones = {"Ventas totales", "Atrás"};
 
         int opcion = JOptionPane.showOptionDialog(null, "Ventas: ",
-                "Concesionario el Pelos - Ventas", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                "Concesionario el Pelos - Ventas", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, iconoVentasTotales,
                 opciones, "Atrás");
 
         switch (opcion) {
             case 0:
-                //Buscar por placa
+                elPelos.ventasTotales();
+                VentasPane();
                 break;
             case 1:
-                //Buscar por marca
-                break;
-            case 2:
-                //Buscar por referencia
-                break;
-            case 3:
-                //Buscar por modelo
-                break;
-            case 4:
                 Administrador();
                 break;
             default:
@@ -311,7 +316,7 @@ public class Pane {
         String[] opciones = {"Placa", "Atrás"};
 
         int opcion = JOptionPane.showOptionDialog(null, "Eliminar Vehiculo: ",
-                "Concesionario el Pelos - Eliminar", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                "Concesionario el Pelos - Eliminar", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, iconoEliminar,
                 opciones, "Atrás");
 
         switch (opcion) {
@@ -324,7 +329,8 @@ public class Pane {
                 Administrador();
                 break;
             default:
-                System.out.println("Opción no válida");
+                JOptionPane.showMessageDialog(null, "Opción no válida",
+                        "Concesionario el Pelos - Eliminar", JOptionPane.INFORMATION_MESSAGE, iconoEliminar);
                 break;
         }
 

@@ -1,9 +1,6 @@
 package inicio;
 
-import logica.Auto;
-import logica.Camion;
 import logica.Concesionario;
-import logica.Moto;
 import vistas.Pane;
 
 /**
@@ -18,15 +15,9 @@ public class Main {
     public static void main(String[] args) {
 
         Pane elPelosPane = new Pane();
-        Concesionario elPelosConcesionario = new Concesionario();
 
         //Método para ejecutar el Login
-        //elPelosConcesionario.InitialVehicles();
         elPelosPane.Administrador();
-
-
-
-
 
     }
 }
